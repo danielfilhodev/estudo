@@ -11,7 +11,10 @@ class Home {
      * @return string
      */
     public static function getHome(){
-       return View::render("\pages\home1");
+       return View::render('\pages\home',[
+        'name' => "Daniel",
+        'description' => "Estudo de MVC e PHPOO"
+       ]);
     }
 
 }

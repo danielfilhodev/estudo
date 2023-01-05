@@ -18,13 +18,24 @@ class View{
     /**
      * Método responsável por retornar o conteúdo renderizado passando as variáveis para uma view
      * @param string $view
+     * @param array $vars {string/numeric}
      * @return string
      */
-    public static function render($view){
+    public static function render($view, $vars = []){
         // CONTEÚDO DA VIEW
         $contentView = self::getContentView($view);
+        
+        // CHAVES DO ARRAY DE VARIAVEIS
+        $keys = array_keys($vars);       
+        
+        // ADICIONA O DOUBLE MUSTACHE NAS VARIÁVEIS
+        $keys = array_map(function ($item) {
+            return '{{'.$item.'}}';
+        },$keys);
+              
+        $values = array_values($vars);
 
         // RETORNA O CONTEÚDO RENDERIZADO
-        return $contentView; 
+        return str_replace($keys,$values,$contentView); 
     }
 }
