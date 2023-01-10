@@ -6,23 +6,23 @@ use \App\Utils\View;
 use \App\Controller\Pages\Page;
 use \App\Model\Entity\Organization;
 
-class Home extends Page{
+class About extends Page{
 
     /**
      * Método responsável por retornar o conteúdo view da home
      * @return string
      */
-    public static function getHome(){
-        // ORGANIZAÇÃO
+    public static function getAbout(){
+        // MODEL ORGANIZAÇÃO
         $obOrganization = new Organization;
-        // VIEW DA HOME
-        $content = View::render('\site\home',[
+        // VIEW DA ABOUT
+        $content = View::render('\site\about',[
             'name' => $obOrganization->name,
             'description' => $obOrganization->description
         ]);      
 
         // VIEW DA PÁGINA TEMPLATE
-        return parent::getMain('Home',$content);
+        return parent::getMain('Sobre',$content);
     }
 
 
